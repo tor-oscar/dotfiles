@@ -6,3 +6,8 @@ If prepended with '-' it is missing but requested
 - powerline
 - inputrc
 - zsh
+- solarized
+
+== TODO ==
+One directory for each part
+each directory includes file with url to git repo and tag/hash/brach to checkout
