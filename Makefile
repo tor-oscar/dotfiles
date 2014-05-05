@@ -19,4 +19,5 @@ install: $(patsubst %,%-install,$(DOTFILES))
 	$(MAKE) -C $* clean
 
 testinit:
-	mkdir -p test_home/.config
+	mkdir -p test_home/.config/fontconfig/conf.d
+	mkdir -p test_home/.fonts
