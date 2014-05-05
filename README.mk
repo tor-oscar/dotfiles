@@ -8,6 +8,7 @@ If prepended with '-' it is missing but requested
 - inputrc
 - zsh
 - solarized
+  + GNOME_TERMINAL_PROFILE=<the gnome terminal profile to set colors in>
 
 == TODO ==
 One directory for each part
