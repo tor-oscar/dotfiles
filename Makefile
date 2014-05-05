@@ -1,14 +1,9 @@
 include makefile-vars.mk
-DOTFILES=vim
-list1=a b c d
-list2=1 2 3 4
+DOTFILES=vim gnome-terminal dircolors powerline
 
 .PHONY: all install testinit
 
 all:
-
-join:
-	echo "$(join $(list1), $(list2))"
 
 install: $(patsubst %,%-install,$(DOTFILES))
 

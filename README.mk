@@ -3,11 +3,11 @@
 == List of dotfiles ==
 If prepended with '-' it is missing but requested
 - tmux
-- vim
-- powerline
+- vim test
+- powerline test
 - inputrc
 - zsh
-- solarized
+- solarized test
   + GNOME_TERMINAL_PROFILE=<the gnome terminal profile to set colors in>
 
 == TODO ==
