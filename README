@@ -8,8 +8,12 @@ If prepended with '-' it is missing but requested
 - inputrc
 - zsh
 - solarized test
-  + GNOME_TERMINAL_PROFILE=<the gnome terminal profile to set colors in>
 
 == TODO ==
 One directory for each part
 each directory includes file with url to git repo and tag/hash/brach to checkout
+
+== Install ==
+HOME: The directory to install into
+GNOME_TERMINAL_PROFILE: the gnome terminal profile to set colors in
+
