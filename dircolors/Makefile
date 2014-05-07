@@ -2,7 +2,7 @@ include ../makefile-vars.mk
 GIT_URL=https://github.com/seebi/dircolors-solarized.git
 GIT_PATH=$(CURDIR)/dircolors-solarized-git
 LINK_PATH=$(HOME)/.dircolorsrc
-DIRCOL_FILE=$(CURDIR)/dircolorsrc.sh
+DIRCOL_FILE=$(GIT_PATH)/dircolors.256dark
 
 .PHONY: install uninstall
 
