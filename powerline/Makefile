@@ -20,4 +20,7 @@ $(HOME)/.config/powerline: $(BACKUP_DIR)/.config/powerline
 	fc-cache -vf $(HOME)/.fonts
 	test -f $(PATHS_FILE) && grep -q '$(PATH_VAR)' $(PATHS_FILE) || echo '$(PATH_VAR)' >> $(PATHS_FILE)
 
+uninstall:
+	echo "TODO: uninstalling..."
+
 include ../makefile-utils.mk
