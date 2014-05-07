@@ -9,6 +9,8 @@ install: clone
 	$(GIT_PATH)/install.sh --scheme dark --profile $(GNOME_TERMINAL_PROFILE)
 
 uninstall:
-	echo "TODO: uninstalling..."
+	echo "To uninstall gnome terminal solarized theme:"
+	echo "Gnome <=3.6: rm -r ~/.gconf/apps/gnome-terminal/profiles/Solarized/"
+	echo "Gnome >=3.8: dconf reset -f /org/gnome/terminal/legacy/profiles:/PROFILE_ID"
 
 include ../makefile-utils.mk

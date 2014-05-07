@@ -7,7 +7,7 @@ If prepended with '-' it is missing but requested
 - powerline test
 - inputrc
 - zsh
-- solarized test
+- gnome-terminal solarized test
 
 == TODO ==
 One directory for each part
