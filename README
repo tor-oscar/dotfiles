@@ -17,3 +17,7 @@ each directory includes file with url to git repo and tag/hash/brach to checkout
 HOME: The directory to install into
 GNOME_TERMINAL_PROFILE: the gnome terminal profile to set colors in
 
+== Dependencies ==
+common: readlink, git
+gnome-termina solarized: gconf (gconf-cli)
+
