@@ -14,7 +14,9 @@ $(HOME)/.config/powerline: $(BACKUP_DIR)/.config/powerline
 	mkdir -p $@
 	cp -R $(GIT_PATH)/powerline/config_files/* $@
 	cp -R config/* $@
+	mkdir -p $(HOME)/.fonts/
 	cp $(GIT_PATH)/font/PowerlineSymbols.otf $(HOME)/.fonts/
+	mkdir -p $(HOME)/.config/fontconfig/conf.d/
 	cp $(GIT_PATH)/font/10-powerline-symbols.conf $(HOME)/.config/fontconfig/conf.d/
 	fc-cache -vf $(HOME)/.fonts
 
