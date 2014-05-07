@@ -1,5 +1,5 @@
 include makefile-vars.mk
-DOTFILES=zsh vim gnome-terminal dircolors powerline
+DOTFILES=zsh powerline vim gnome-terminal dircolors
 
 .PHONY: all install check_dependencies testinit
 
