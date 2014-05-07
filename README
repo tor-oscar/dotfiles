@@ -10,8 +10,7 @@ If prepended with '-' it is missing but requested
 - gnome-terminal solarized test
 
 == TODO ==
-One directory for each part
-each directory includes file with url to git repo and tag/hash/brach to checkout
+Vim: install .vimrc from dotfiles instead of from vim repo
 
 == Install ==
 HOME: The directory to install into
