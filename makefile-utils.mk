@@ -9,7 +9,7 @@ clone:
 # Try to check whether the file should be backed up or not
 $(BACKUP_DIR)/%: |$(BACKUP_DIR)
 	mkdir -p $(dir $@)
-	mv $(HOME)/$* $@
+	-mv $(HOME)/$* $@
 
 $(BACKUP_DIR):
 	mkdir -p $@
