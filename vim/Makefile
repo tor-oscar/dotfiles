@@ -9,7 +9,7 @@ install: $(HOME)/.vim
 	$(MAKE) HOME=$(HOME) -C $(HOME)/.vim
 
 uninstall: 
-	test -h $(HOME)/.vim -a $(GIT_PATH) = `readlink $(HOME)/.vim` && $(RM) $(HOME)/.vim
+	test -h $(HOME)/.vim -a $(GIT_PATH) = `readlink $(HOME)/.vim` && $(RM) $(HOME)/.vim || :
 
 $(HOME)/.vim: $(BACKUP_DIR)/.vim clone
 	ln -s $(GIT_PATH) $@
