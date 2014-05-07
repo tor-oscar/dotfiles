@@ -1,14 +1,15 @@
 include ../makefile-vars.mk
 GIT_URL=https://github.com/seebi/dircolors-solarized.git
 GIT_PATH=$(CURDIR)/dircolors-solarized-git
-RC_LINE=. $(CURDIR)/dircolorsrc.sh
+LINK_PATH=$(HOME)/.dircolorsrc
+DIRCOL_FILE=$(CURDIR)/dircolorsrc.sh
 
 .PHONY: install uninstall
 
-install: clone
-	test -f $(SHELLRC_FILE) && grep -q '$(RC_LINE)' $(SHELLRC_FILE) || echo '$(RC_LINE)' >> $(SHELLRC_FILE)
+install: $(BACKUP_DIR)/.dircolorsrc clone
+	ln -s $(DIRCOL_FILE) $(LINK_PATH)
 
 uninstall:
-	echo "TODO: uninstalling..."
+	test -h $(LINK_PATH) -a $(DIRCOL_FILE) = `readlink $(LINK_PATH) && $(RM) $(LINK_PATH)
 
 include ../makefile-utils.mk
