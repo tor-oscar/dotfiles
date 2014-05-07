@@ -7,6 +7,8 @@ all:
 
 install: check_dependencies $(patsubst %,%-install,$(DOTFILES))
 
+uninstall: $(patsubst %,%-uninstall,$(DOTFILES))
+
 %-install: 
 	$(MAKE) -C $* install
 
