@@ -1,0 +1,4 @@
+# Add paths to the PATH variable here, nothing else!
+
+PATH=$PATH:$HOME/.powerline/scripts/
+PATH=$HOME/bin:$PATH

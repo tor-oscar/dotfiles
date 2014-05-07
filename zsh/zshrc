@@ -1,9 +1,16 @@
+# How to use this file:
+# Do not add PATHs here, add them to ~/.shell_paths or ~/.shell_paths_local
+# Do not add local machine specific configuration here, add it to ~/.zshrc_local
+
 # Set up PATH
-PATH=$PATH:$HOME/.powerline/scripts/:$HOME/.codesourcery/arm-2010q1/bin/
-PATH=$PATH:$HOME/android-sdk-linux/tools/:$HOME/android-sdk-linux/platform-tools/
+if [ -r ~/.shell_paths ]; then
+    . ~/.shell_paths
+fi
 
 # Set up the prompt
-source  ~/.powerline/powerline/bindings/zsh/powerline.zsh
+if [ -r ~/.powerline/powerline/bindings/zsh/powerline.zsh ]; then
+	source  ~/.powerline/powerline/bindings/zsh/powerline.zsh
+fi
 
 setopt histignorealldups sharehistory
 
@@ -36,16 +43,16 @@ zstyle ':completion:*' verbose true
 zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31'
 zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
 
+export EDITOR=vi
 
 if [ -x /usr/bin/dircolors ]; then
-    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+    test -r ~/.dircolorsrc && eval "$(dircolors -b ~/.dircolorsrc)" || eval "$(dircolors -b)"
 fi
 
-if [ -f ~/.aliases ]; then
-    . ~/.aliases
+if [ -r ~/.shell_aliases ]; then
+    . ~/.shell_aliases
 fi
 
-export EDITOR=vim
-
-PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
-source ~/.rvm/scripts/rvm
+if [ -r ~/.zshrc_local ]; then
+    . ~/.zshrc_local
+fi
