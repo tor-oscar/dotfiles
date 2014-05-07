@@ -1,6 +1,6 @@
 # Add aliases to this file
 alias tmux='TERM=screen-256color-bce tmux'
-alias ls='ls --color=auto'
-alias ll='ls -l --color=auto'
-alias la='ls -la --color=auto'
+alias ls='ls -CF --color=auto'
+alias ll='ls -lhF --color=auto'
+alias la='ls -A --color=auto'
 alias grep='grep --color=auto'
