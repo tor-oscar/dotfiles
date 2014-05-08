@@ -12,7 +12,7 @@ uninstall:
 	test -h $(HOME)/.vim -a $(GIT_PATH) = `readlink $(HOME)/.vim` && $(RM) $(HOME)/.vim || :
 
 $(HOME)/.vim: $(BACKUP_DIR)/.vim clone
-	ln -s $(GIT_PATH) $@
+	ln -s $(GIT_PATH) $(HOME)/.vim
 
 clean:
 	$(RM) -r $(GIT_PATH)

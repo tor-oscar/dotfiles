@@ -11,7 +11,7 @@ $(HOME)/.powerline: $(BACKUP_DIR)/.powerline clone
 	test -h $@ || ln -s $(GIT_PATH) $@
 
 $(HOME)/.config/powerline: $(BACKUP_DIR)/.config/powerline
-	mkdir -p $@
+	mkdir -p $(HOME)/.config/powerline
 	cp -R $(GIT_PATH)/powerline/config_files/* $@
 	cp -R config/* $@
 	mkdir -p $(HOME)/.fonts/

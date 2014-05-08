@@ -6,8 +6,9 @@ If prepended with '-' it is missing but requested
 - vim test
 - powerline test
 - inputrc
-- zsh
+- zsh test
 - gnome-terminal solarized test
+- git
 
 == TODO ==
 Vim: install .vimrc from dotfiles instead of from vim repo
@@ -18,5 +19,5 @@ GNOME_TERMINAL_PROFILE: the gnome terminal profile to set colors in
 
 == Dependencies ==
 common: readlink, git
-gnome-termina solarized: gconf (gconf-cli)
+gnome-termina solarized: dconf (dconf-cli)
 
