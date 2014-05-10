@@ -1,0 +1,14 @@
+[alias]
+	ci		= commit
+	st		= status
+	br		= branch
+	co		= checkout
+	lol		= log --graph --decorate --pretty=oneline --abbrev-commit
+	lola	= log --graph --decorate --pretty=oneline --abbrev-commit --all
+[user]
+	email	= osse.olsson@gmail.com
+	name	= Oscar Olsson
+[color]
+	branch	= auto
+	status	= auto
+	diff	= auto

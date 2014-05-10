@@ -5,10 +5,10 @@ If prepended with '-' it is missing but requested
 - tmux
 - vim test
 - powerline test
-- inputrc
+- inputrc test
 - zsh test
 - gnome-terminal solarized test
-- git
+- git test
 
 == TODO ==
 Vim: install .vimrc from dotfiles instead of from vim repo
