@@ -4,15 +4,18 @@ GIT_PATH=$(CURDIR)/vim-git
 
 .PHONY: install uninstall
 
-install: $(HOME)/.vim
-	echo "installing vim into $(HOME)/.vim"
+install: $(HOME)/.vim $(HOME)/.vimrc
 	$(MAKE) HOME=$(HOME) -C $(HOME)/.vim
 
 uninstall: 
-	test -h $(HOME)/.vim -a $(GIT_PATH) = `readlink $(HOME)/.vim` && $(RM) $(HOME)/.vim || :
+	test -h $(HOME)/.vim && $(GIT_PATH) = `readlink $(HOME)/.vim` && $(RM) $(HOME)/.vim || :
+	test -h $(HOME)/.vimrc && $(GIT_PATH)/vimrc = `readlink $(HOME)/.vimrc` && $(RM) $(HOME)/.vimrc || :
 
 $(HOME)/.vim: $(BACKUP_DIR)/.vim clone
-	ln -s $(GIT_PATH) $(HOME)/.vim
+	ln -s $(GIT_PATH) $@
+
+$(HOME)/.vimrc: $(BACKUP_DIR)/.vimrc
+	ln -s $(GIT_PATH)/vimrc $@
 
 clean:
 	$(RM) -r $(GIT_PATH)
