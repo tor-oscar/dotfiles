@@ -3,7 +3,7 @@ include ../makefile-vars.mk
 .PHONY: clone
 
 clone:
-	git clone $(GIT_URL) $(GIT_PATH) || { echo "Updating $(GIT_PATH)" ; cd $(GIT_PATH) && git pull; }
+	test -e $(GIT_PATH) && { cd $(GIT_PATH) && git pull; } || { $(RM) -r $(GIT_PATH); git clone $(GIT_URL) $(GIT_PATH); }
 
 # TODO never overwrite existing backup
 # Try to check whether the file should be backed up or not
