@@ -1,0 +1,5 @@
+# GNU Readline configuration
+# Set auto complete to ignore case
+set completion-ignore-case on
+
+set editing-mode vi
