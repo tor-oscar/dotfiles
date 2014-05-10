@@ -11,7 +11,7 @@ $(HOME)/.powerline: $(BACKUP_DIR)/.powerline clone
 	test -h $@ || ln -s $(GIT_PATH) $@
 
 $(HOME)/.config/powerline: $(BACKUP_DIR)/.config/powerline
-	mkdir -p $(HOME)/.config/powerline
+	mkdir -p $@
 	cp -R $(GIT_PATH)/powerline/config_files/* $@
 	cp -R config/* $@
 	mkdir -p $(HOME)/.fonts/
@@ -21,6 +21,9 @@ $(HOME)/.config/powerline: $(BACKUP_DIR)/.config/powerline
 	fc-cache -vf $(HOME)/.fonts
 
 uninstall:
-	echo "TODO: uninstalling..."
+	$(RM) -r $(HOME)/.config/powerline
+	$(RM) $(HOME)/.fonts/PowerlineSymbols.otf
+	$(RM) $(HOME)/.config/fontconfig/conf.d/10-powerline-symbols.conf
+	test -h $(HOME)/.powerline && test $(GIT_PATH) = `readlink $(HOME)/.powerline` && $(RM) $(HOME)/.powerline || :
 
 include ../makefile-utils.mk
