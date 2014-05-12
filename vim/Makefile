@@ -5,7 +5,7 @@ GIT_PATH=$(CURDIR)/vim-git
 .PHONY: install uninstall
 
 install: $(HOME)/.vim $(HOME)/.vimrc
-	$(MAKE) HOME=$(HOME) -C $(HOME)/.vim
+	$(MAKE) -C $(GIT_PATH)
 
 uninstall: 
 	test -h $(HOME)/.vim && $(GIT_PATH) = `readlink $(HOME)/.vim` && $(RM) $(HOME)/.vim || :
