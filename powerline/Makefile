@@ -6,6 +6,7 @@ GIT_PATH=$(CURDIR)/powerline-git
 .PHONY: install uninstall
 
 install: $(HOME)/.powerline $(HOME)/.config/powerline
+	cd $(GIT_PATH); python setup.py install --user
 	
 $(HOME)/.powerline: $(BACKUP_DIR)/.powerline clone
 	test -h $@ || ln -s $(GIT_PATH) $@
