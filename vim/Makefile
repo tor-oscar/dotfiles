@@ -1,23 +1,44 @@
 include ../makefile-vars.mk
-GIT_URL=git.mufasa:vim
-GIT_PATH=$(CURDIR)/vim-git
 
-.PHONY: install uninstall
+plugin_names = powerline
+git_plugin_names = tagbar autotag nerdtree nerdcommenter \
+				   tabular solarized handlebars tabline
 
-install: $(HOME)/.vim $(HOME)/.vimrc
-	$(MAKE) -C $(GIT_PATH)
+tabline_url = https://github.com/DrunkenInfant/vim-tabline.git
+tagbar_url = https://github.com/majutsushi/tagbar.git
+autotag_url = https://github.com/vim-scripts/AutoTag.git
+solarized_url = https://github.com/altercation/vim-colors-solarized.git
+nerdtree_url = https://github.com/scrooloose/nerdtree.git
+nerdcommenter_url = https://github.com/scrooloose/nerdcommenter.git
+tabular_url = https://github.com/godlygeek/tabular.git
+handlebars_url = https://github.com/mustache/vim-mustache-handlebars.git
 
-uninstall: 
-	test -h $(HOME)/.vim && $(GIT_PATH) = `readlink $(HOME)/.vim` && $(RM) $(HOME)/.vim || :
-	test -h $(HOME)/.vimrc && $(GIT_PATH)/vimrc = `readlink $(HOME)/.vimrc` && $(RM) $(HOME)/.vimrc || :
+.PHONY: install uninstall $(HOME)/.vimrc $(HOME)/.vim
 
-$(HOME)/.vim: $(BACKUP_DIR)/.vim clone
-	test ! -d $@ && ln -s $(GIT_PATH) $@ || :
+install: plugins $(HOME)/.vim $(HOME)/.vimrc
 
-$(HOME)/.vimrc: $(BACKUP_DIR)/.vimrc
-	test ! -f $@ && ln -s $(GIT_PATH)/vimrc $@ || :
+plugins: $(patsubst %, bundle/%-git, $(git_plugin_names)) $(plugin_names)
 
-clean:
-	$(RM) -r $(GIT_PATH)
+powerline:
+	ln -sf ~/.powerline/powerline/bindings/vim/ bundle/powerline
 
-include ../makefile-utils.mk
+bundle/%-git:
+	git clone $($*_url) $@
+
+$(HOME)/.vim:
+	ln -sf $(CURDIR) $@
+
+$(HOME)/.vimrc: vimrc
+	ln -sf $(CURDIR)/vimrc $@
+
+uninstall:
+	test -h $(HOME)/.vim && $(CURDIR) = `readlink $(HOME)/.vim` && $(RM) $(HOME)/.vim || :
+	test -h $(HOME)/.vimrc && $(CURDIR)/vimrc = `readlink $(HOME)/.vimrc` && $(RM) $(HOME)/.vimrc || :
+
+clean-plugins: $(patsubst %, clean-bundle/%-git, $(git_plugin_names)) $(patsubst %, clean-%, $(plugin_names))
+
+clean-bundle/%-git:
+	rm -rf bundle/$*-git
+
+clean-powerline: clean-bundle/powerline-git
+	rm -rf bundle/powerline

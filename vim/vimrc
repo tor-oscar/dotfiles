@@ -1,0 +1,75 @@
+" Settings
+" ---- MODULES ----
+call pathogen#infect()
+call pathogen#helptags()
+
+" ---- INTERFACE ----
+"
+filetype plugin indent on
+syntax on								" enable syntax highlighting
+
+" COLOR AND THEME
+set t_Co=256
+set background=dark
+colorscheme solarized
+set encoding=utf-8
+
+" UI ELEMENTS
+set ruler								" show cursor pos in low right corner
+set number								" show line numbers
+set showcmd								" show incomplete comands in low right corner
+set title								" show title in console title bar.
+set showtabline=2
+set nocursorline						" Do not highlight current line
+										" due to performance issues
+set colorcolumn=81
+set laststatus=2						" Always show the statusline
+
+" ---- BEHAVIOUR ----
+set switchbuf=usetab,newtab				" When opening a buffer, if buffer is
+										" open in another tab switch to it
+										" (usetab)
+										" if the buffer is not open create a
+										" new tab and open the buffer in it
+										" (newtab).
+set autoread							" Reload file if changed from other source
+
+set splitright							" Split window to the right of current
+set splitbelow							" Split window below the current
+
+" CTags
+set tags=tags;$HOME						" Search for tags file named .tags in
+										" current directory or search upwards
+										" until found.
+
+" BACKUP
+set nobackup							" Disabling backup
+set nowb
+set noswapfile
+
+" SEARCH
+" Show matches while typing key word
+set incsearch
+" Highlight matches
+set hlsearch
+" Remap next and previous to also center on the highlighted word
+map N Nzz
+map n nzz
+
+" AUTOCOMPLETION
+set wildmenu							" Enable tab-completion menu.
+set wildmode=longest,list,full			" Full completion.
+set wildignorecase						" Ignore case in tab-completion
+
+" INDENTATION
+set shiftwidth=4						" Set tab size
+set tabstop=4
+set softtabstop=4
+set expandtab
+set autoindent							" auto indentation
+set smartindent
+
+" ---- MAPPINGS ----
+" Remap :W to :w to avoid common misstake
+cnoreabbrev <expr> W ((getcmdtype() is# ':' && getcmdline() is# 'W')?('w'):('W'))
+nnoremap <silent> <F3> :TagbarToggle<CR>
