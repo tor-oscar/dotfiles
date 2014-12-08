@@ -1,20 +1,20 @@
-include ../makefile-vars.mk
-
 GIT_URL=https://github.com/Lokaltog/powerline.git
 GIT_PATH=$(CURDIR)/powerline-git
 
-.PHONY: install uninstall
+.PHONY: install uninstall fonts config
 
-install: $(HOME)/.powerline $(HOME)/.config/powerline
+install: $(HOME)/.powerline config fonts
 	cd $(GIT_PATH); python setup.py install --user
 	
-$(HOME)/.powerline: $(BACKUP_DIR)/.powerline clone
-	test -h $@ || ln -s $(GIT_PATH) $@
+$(HOME)/.powerline:
+	git clone $(GIT_URL) $(GIT_PATH)
+	ln -sf $(GIT_PATH) $@
 
-$(HOME)/.config/powerline: $(BACKUP_DIR)/.config/powerline
+config:
 	mkdir -p $@
 	cp -R $(GIT_PATH)/powerline/config_files/* $@
-	cp -R config/* $@
+
+fonts:
 	mkdir -p $(HOME)/.fonts/
 	cp $(GIT_PATH)/font/PowerlineSymbols.otf $(HOME)/.fonts/
 	mkdir -p $(HOME)/.config/fontconfig/conf.d/
@@ -26,5 +26,3 @@ uninstall:
 	$(RM) $(HOME)/.fonts/PowerlineSymbols.otf
 	$(RM) $(HOME)/.config/fontconfig/conf.d/10-powerline-symbols.conf
 	test -h $(HOME)/.powerline && test $(GIT_PATH) = `readlink $(HOME)/.powerline` && $(RM) $(HOME)/.powerline || :
-
-include ../makefile-utils.mk
