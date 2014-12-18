@@ -5,7 +5,7 @@ GNOME_TERMINAL_PROFILE=Default
 .PHONY: install uninstall
 
 install:
-	git clone $(GIT_URL) $(GIT_PATH)
+	$(RM) -r $(GIT_PATH) && git clone $(GIT_URL) $(GIT_PATH)
 	$(GIT_PATH)/install.sh --scheme dark --profile $(GNOME_TERMINAL_PROFILE)
 
 uninstall:

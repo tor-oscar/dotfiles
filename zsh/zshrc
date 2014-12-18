@@ -40,7 +40,11 @@ zstyle ':completion:*' verbose true
 zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31'
 zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
 
+# Prefer vim for everything
+# editor
 export EDITOR=vi
+# command prompt
+bindkey -v
 
 if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolorsrc && eval "$(dircolors -b ~/.dircolorsrc)" || eval "$(dircolors -b)"

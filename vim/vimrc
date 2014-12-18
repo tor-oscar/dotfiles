@@ -62,9 +62,9 @@ set wildmode=longest,list,full			" Full completion.
 set wildignorecase						" Ignore case in tab-completion
 
 " INDENTATION
-set shiftwidth=4						" Set tab size
-set tabstop=4
-set softtabstop=4
+set shiftwidth=2						" Set tab size
+set tabstop=2
+set softtabstop=2
 set expandtab
 set autoindent							" auto indentation
 set smartindent

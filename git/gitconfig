@@ -12,3 +12,6 @@
 	branch	= auto
 	status	= auto
 	diff	= auto
+
+[include]
+    path = ~/.gitconfig.user

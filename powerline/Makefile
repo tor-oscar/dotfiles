@@ -1,18 +1,19 @@
 GIT_URL=https://github.com/Lokaltog/powerline.git
 GIT_PATH=$(CURDIR)/powerline-git
 
-.PHONY: install uninstall fonts config
 
-install: $(HOME)/.powerline config fonts
+.PHONY: install uninstall fonts config powerline
+
+install: powerline config fonts
 	cd $(GIT_PATH); python setup.py install --user
 	
-$(HOME)/.powerline:
-	git clone $(GIT_URL) $(GIT_PATH)
-	ln -sf $(GIT_PATH) $@
+powerline:
+	$(RM) -r $(GIT_PATH) && git clone $(GIT_URL) $(GIT_PATH)
+	ln -sf $(GIT_PATH) $(HOME)/.powerline
 
 config:
-	mkdir -p $@
-	cp -R $(GIT_PATH)/powerline/config_files/* $@
+	mkdir -p $(HOME)/.config/powerline
+	cp -R $(GIT_PATH)/powerline/config_files/* $(HOME)/.config/powerline
 
 fonts:
 	mkdir -p $(HOME)/.fonts/

@@ -1,5 +1,3 @@
-include ../makefile-vars.mk
-
 plugin_names = powerline
 git_plugin_names = tagbar autotag nerdtree nerdcommenter \
 				   tabular solarized handlebars tabline
@@ -20,16 +18,16 @@ install: plugins $(HOME)/.vim $(HOME)/.vimrc
 plugins: $(patsubst %, bundle/%-git, $(git_plugin_names)) $(plugin_names)
 
 powerline:
-	ln -sf ~/.powerline/powerline/bindings/vim/ bundle/powerline
+	$(RM) -r bundle/powerline && ln -sf ~/.powerline/powerline/bindings/vim/ bundle/powerline
 
 bundle/%-git:
-	git clone $($*_url) $@
+	$(RM) -r $@ && git clone $($*_url) $@
 
 $(HOME)/.vim:
-	ln -sf $(CURDIR) $@
+	$(RM) -r $@ && ln -sf $(CURDIR) $@
 
 $(HOME)/.vimrc: vimrc
-	ln -sf $(CURDIR)/vimrc $@
+	$(RM) -r $@ && ln -sf $(CURDIR)/vimrc $@
 
 uninstall:
 	test -h $(HOME)/.vim && $(CURDIR) = `readlink $(HOME)/.vim` && $(RM) $(HOME)/.vim || :
