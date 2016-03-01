@@ -123,6 +123,10 @@ bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcu
 # Lock screen, Mod1=Alt
 bindsym Mod1+Control+l exec i3lock
 
+bindsym Control+Shift+r exec xmodmap ~/.Xmodmap
+bindsym Control+Shift+e exec setxkbmap -layout us
+bindsym Control+Shift+s exec setxkbmap -layout se -variant nodeadkeys
+
 # resize window (you can also use the mouse for that)
 mode "resize" {
         # These bindings trigger as soon as you enter the resize mode
