@@ -1,6 +1,6 @@
 plugin_names = powerline
 git_plugin_names = tagbar autotag nerdtree nerdcommenter \
-				   tabular solarized handlebars tabline
+				   tabular solarized handlebars tabline javascript
 
 tabline_url = https://github.com/DrunkenInfant/vim-tabline.git
 tagbar_url = https://github.com/majutsushi/tagbar.git
@@ -10,6 +10,7 @@ nerdtree_url = https://github.com/scrooloose/nerdtree.git
 nerdcommenter_url = https://github.com/scrooloose/nerdcommenter.git
 tabular_url = https://github.com/godlygeek/tabular.git
 handlebars_url = https://github.com/mustache/vim-mustache-handlebars.git
+javascript_url = https://github.com/jelera/vim-javascript-syntax.git
 
 .PHONY: install uninstall $(HOME)/.vimrc $(HOME)/.vim
 
