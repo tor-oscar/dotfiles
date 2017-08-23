@@ -54,6 +54,10 @@ if [ -r ~/.shell_aliases ]; then
     . ~/.shell_aliases
 fi
 
+if [ -f ~/.asdf/asdf.sh ]; then
+  . ~/.asdf/asdf.sh
+fi
+
 if [ -r ~/.zshrc_local ]; then
     . ~/.zshrc_local
 fi
