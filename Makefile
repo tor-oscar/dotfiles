@@ -1,5 +1,5 @@
 include makefile-vars.mk
-DOTFILES=zsh powerline tmux vim gnome-terminal dircolors git input i3 X
+DOTFILES=zsh powerline tmux vim gnome-terminal dircolors git input i3 X systemd
 
 .PHONY: all install check_dependencies testinit
 
