@@ -124,8 +124,8 @@ bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcu
 bindsym Mod1+Control+l exec i3lock
 
 bindsym Control+Shift+r exec xmodmap ~/.Xmodmap
-bindsym Control+Shift+e exec setxkbmap -layout us
-bindsym Control+Shift+s exec setxkbmap -layout se -variant nodeadkeys
+bindsym Control+Shift+e exec setxkbmap -layout us && xmodmap ~/.Xmodmap
+bindsym Control+Shift+s exec setxkbmap -layout se -variant nodeadkeys && xmodmap ~/.Xmodmap
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
