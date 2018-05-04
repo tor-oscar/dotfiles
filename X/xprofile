@@ -1,1 +1,0 @@
-xrandr --output DVI-D-1 --auto --left-of DVI-D-0 --rotate left
