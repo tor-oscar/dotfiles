@@ -4,7 +4,16 @@ call pathogen#infect()
 call pathogen#helptags()
 
 " ---- INTERFACE ----
-"
+
+" INDENTATION
+set shiftwidth=2						" Set tab size
+set tabstop=2
+set softtabstop=2
+set expandtab
+set autoindent							" auto indentation
+set smartindent
+
+
 filetype plugin indent on
 syntax on								" enable syntax highlighting
 
@@ -63,13 +72,6 @@ set wildmenu							" Enable tab-completion menu.
 set wildmode=longest,list,full			" Full completion.
 set wildignorecase						" Ignore case in tab-completion
 
-" INDENTATION
-set shiftwidth=2						" Set tab size
-set tabstop=2
-set softtabstop=2
-set expandtab
-set autoindent							" auto indentation
-set smartindent
 
 " ---- MAPPINGS ----
 " Remap :W to :w to avoid common misstake
