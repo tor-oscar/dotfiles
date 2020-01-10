@@ -41,6 +41,8 @@ set splitbelow							" Split window below the current
 set tags=tags;$HOME						" Search for tags file named .tags in
 										" current directory or search upwards
 										" until found.
+" NERDTree
+let g:NERDTreeWinSize=50
 
 " BACKUP
 set nobackup							" Disabling backup
@@ -73,3 +75,8 @@ set smartindent
 " Remap :W to :w to avoid common misstake
 cnoreabbrev <expr> W ((getcmdtype() is# ':' && getcmdline() is# 'W')?('w'):('W'))
 nnoremap <silent> <F3> :TagbarToggle<CR>
+noremap <Leader>t :NERDTreeToggle<CR>
+
+" GUIDES
+" Move window to tab (ish) http://vim.wikia.com/wiki/Move_current_window_between_tabs
+" NERDTree git plugin https://github.com/Xuyuanp/nerdtree-git-plugin
