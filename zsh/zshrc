@@ -61,3 +61,8 @@ fi
 if [ -r ~/.zshrc_local ]; then
     . ~/.zshrc_local
 fi
+
+# Enable Erlang history
+export ERL_AFLAGS="-kernel shell_history enabled"
+# Disable microsoft spyware
+export DOTNET_CLI_TELEMETRY_OPTOUT=1
