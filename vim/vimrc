@@ -82,3 +82,6 @@ noremap <Leader>t :NERDTreeToggle<CR>
 " GUIDES
 " Move window to tab (ish) http://vim.wikia.com/wiki/Move_current_window_between_tabs
 " NERDTree git plugin https://github.com/Xuyuanp/nerdtree-git-plugin
+
+" Additional filetypes
+autocmd BufNewFile,BufRead *.rs set filetype=rust

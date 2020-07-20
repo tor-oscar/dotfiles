@@ -1,7 +1,7 @@
 plugin_names = powerline
 git_plugin_names = tagbar autotag nerdtree nerdcommenter \
 				   tabular solarized handlebars tabline javascript \
-					 elixir csharp typescript
+					 elixir csharp typescript rust rust_racer
 
 tabline_url = https://github.com/DrunkenInfant/vim-tabline.git
 tagbar_url = https://github.com/majutsushi/tagbar.git
@@ -15,6 +15,8 @@ javascript_url = https://github.com/jelera/vim-javascript-syntax.git
 elixir_url = https://github.com/elixir-lang/vim-elixir.git
 csharp_url = git://github.com/OrangeT/vim-csharp.git
 typescript_url = https://github.com/leafgarland/typescript-vim.git
+rust_url = https://github.com/rust-lang/rust.vim.git
+rust_racer_url = https://github.com/racer-rust/vim-racer.git
 
 .PHONY: install uninstall $(HOME)/.vimrc $(HOME)/.vim
 
