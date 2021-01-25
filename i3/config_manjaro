@@ -326,7 +326,7 @@ set_from_resource $term_color15    color15
 bar {
 	i3bar_command i3bar
   #status_command i3status
-  status_command /home/oscar/.local/lib/python3.9/site-packages/powerline/bindings/i3/powerline-i3.py i3status
+  status_command /home/oscar/.powerline/bindings/i3/powerline-i3.py i3status
 	position top
 
 ## please set your primary output first. Example: 'xrandr --output eDP1 --primary'

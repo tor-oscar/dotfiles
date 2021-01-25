@@ -13,8 +13,8 @@ if [ -f ~/.asdf/asdf.sh ]; then
 fi
 
 # Set up the prompt
-if [ -r ~/.powerline/powerline/bindings/zsh/powerline.zsh ]; then
-  source  ~/.powerline/powerline/bindings/zsh/powerline.zsh
+if [ -r ~/.powerline/bindings/zsh/powerline.zsh ]; then
+  source  ~/.powerline/bindings/zsh/powerline.zsh
 fi
 
 setopt histignorealldups sharehistory

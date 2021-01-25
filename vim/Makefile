@@ -28,7 +28,7 @@ install: plugins $(HOME)/.vim $(HOME)/.vimrc
 plugins: $(patsubst %, bundle/%-git, $(git_plugin_names)) $(plugin_names)
 
 powerline:
-	$(RM) -r bundle/powerline && ln -sf ~/.local/lib/python3.8/site-packages/powerline/bindings/vim/ bundle/powerline
+	$(RM) -r bundle/powerline && ln -sf ~/.powerline/bindings/vim/ bundle/powerline
 
 bundle/%-git:
 	$(RM) -r $@ && git clone $($*_url) $@
