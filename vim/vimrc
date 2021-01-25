@@ -79,6 +79,17 @@ cnoreabbrev <expr> W ((getcmdtype() is# ':' && getcmdline() is# 'W')?('w'):('W')
 nnoremap <silent> <F3> :TagbarToggle<CR>
 noremap <Leader>t :NERDTreeToggle<CR>
 
+" wintabs mappings
+map <C-H> <Plug>(wintabs_previous)
+map <C-L> <Plug>(wintabs_next)
+map <C-T>c <Plug>(wintabs_close)
+map <C-T>u <Plug>(wintabs_undo)
+map <C-T>o <Plug>(wintabs_only)
+map <C-W>c <Plug>(wintabs_close_window)
+map <C-W>o <Plug>(wintabs_only_window)
+command! Tabc WintabsCloseVimtab
+command! Tabo WintabsOnlyVimtab
+
 " GUIDES
 " Move window to tab (ish) http://vim.wikia.com/wiki/Move_current_window_between_tabs
 " NERDTree git plugin https://github.com/Xuyuanp/nerdtree-git-plugin

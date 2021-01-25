@@ -1,12 +1,13 @@
 plugin_names = powerline
 git_plugin_names = tagbar autotag nerdtree nerdcommenter \
-				   tabular solarized handlebars tabline javascript \
-					 elixir csharp typescript rust rust_racer
+				   tabular solarized handlebars javascript \
+					 elixir csharp typescript rust rust_racer \
+					 wintabs wintabs_powerline
 
 tabline_url = https://github.com/DrunkenInfant/vim-tabline.git
 tagbar_url = https://github.com/majutsushi/tagbar.git
 autotag_url = https://github.com/vim-scripts/AutoTag.git
-solarized_url = https://github.com/altercation/vim-colors-solarized.git
+solarized_url = https://github.com/DrunkenInfant/vim-colors-solarized.git
 nerdtree_url = https://github.com/scrooloose/nerdtree.git
 nerdcommenter_url = https://github.com/scrooloose/nerdcommenter.git
 tabular_url = https://github.com/godlygeek/tabular.git
@@ -17,6 +18,8 @@ csharp_url = git://github.com/OrangeT/vim-csharp.git
 typescript_url = https://github.com/leafgarland/typescript-vim.git
 rust_url = https://github.com/rust-lang/rust.vim.git
 rust_racer_url = https://github.com/racer-rust/vim-racer.git
+wintabs_url = https://github.com/zefei/vim-wintabs
+wintabs_powerline_url = https://github.com/zefei/vim-wintabs-powerline
 
 .PHONY: install uninstall $(HOME)/.vimrc $(HOME)/.vim
 
@@ -25,7 +28,7 @@ install: plugins $(HOME)/.vim $(HOME)/.vimrc
 plugins: $(patsubst %, bundle/%-git, $(git_plugin_names)) $(plugin_names)
 
 powerline:
-	$(RM) -r bundle/powerline && ln -sf ~/.powerline/powerline/bindings/vim/ bundle/powerline
+	$(RM) -r bundle/powerline && ln -sf ~/.local/lib/python3.8/site-packages/powerline/bindings/vim/ bundle/powerline
 
 bundle/%-git:
 	$(RM) -r $@ && git clone $($*_url) $@
