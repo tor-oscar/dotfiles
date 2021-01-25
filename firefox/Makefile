@@ -1,5 +1,5 @@
 DOT_FILE=$(CURDIR)/chrome
-LINK_PATH=$(HOME)/.mozilla/firefox/44sybsef.default/chrome
+LINK_PATH=$(wildcard $(HOME)/.mozilla/firefox/*.default)/chrome
 
 .PHONY: install uninstall
 
