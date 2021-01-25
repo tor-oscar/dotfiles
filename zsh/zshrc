@@ -7,9 +7,14 @@ if [ -r ~/.shell_paths ]; then
     . ~/.shell_paths
 fi
 
+# Setup asdf
+if [ -f ~/.asdf/asdf.sh ]; then
+  . ~/.asdf/asdf.sh
+fi
+
 # Set up the prompt
 if [ -r ~/.powerline/powerline/bindings/zsh/powerline.zsh ]; then
-	source  ~/.powerline/powerline/bindings/zsh/powerline.zsh
+  source  ~/.powerline/powerline/bindings/zsh/powerline.zsh
 fi
 
 setopt histignorealldups sharehistory
@@ -52,10 +57,6 @@ fi
 
 if [ -r ~/.shell_aliases ]; then
     . ~/.shell_aliases
-fi
-
-if [ -f ~/.asdf/asdf.sh ]; then
-  . ~/.asdf/asdf.sh
 fi
 
 if [ -r ~/.zshrc_local ]; then

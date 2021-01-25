@@ -1,5 +1,5 @@
 # Add aliases to this file
-alias tmux='TERM=screen-256color-bce tmux'
+alias tmux='tmux -2'
 alias ls='ls -CF --color=auto'
 alias ll='ls -lhF --color=auto'
 alias la='ls -A --color=auto'
