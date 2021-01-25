@@ -1,0 +1,18 @@
+{
+  "segments": {
+    "left": [
+      {
+        "function": "powerline.segments.i3wm.mode",
+        "priority": 50,
+        "before": " ",
+        "after": " "
+      },
+      {
+        "function": "powerline.segments.i3wm.workspaces",
+        "priority": 50,
+        "before": " ",
+        "after": " "
+      }
+    ]
+  }
+}
