@@ -10,6 +10,7 @@ install:
 	ln -sf $(PATHS_FILE) $(HOME)/.shell_paths
 	ln -sf $(ALIASES_FILE) $(HOME)/.shell_aliases
 	test -f $(HOME)/.zshrc_local || cp $(ZSHRC_LOCAL_FILE) $(HOME)/.zshrc_local
+	chsh -s /usr/bin/zsh
 
 uninstall:
 	test -h $(HOME)/.zshrc && test $(ZSHRC_FILE) = `readlink $(HOME)/.zshrc` && $(RM) $(HOME)/.zshrc || :

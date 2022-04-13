@@ -47,7 +47,7 @@ zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
 
 # Prefer vim for everything
 # editor
-export EDITOR=vi
+export EDITOR=vim
 # command prompt
 bindkey -v
 
