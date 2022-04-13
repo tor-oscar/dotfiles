@@ -5,6 +5,7 @@
 	co		= checkout
 	lol		= log --graph --decorate --pretty=oneline --abbrev-commit
 	lola	= log --graph --decorate --pretty=oneline --abbrev-commit --all
+  pushf = push --force-with-lease
 [user]
 	email	= osse.olsson@gmail.com
 	name	= Oscar Olsson
@@ -15,3 +16,7 @@
 
 [include]
     path = ~/.gitconfig.user
+[init]
+	defaultBranch = main
+[rebase]
+	autosquash = true
