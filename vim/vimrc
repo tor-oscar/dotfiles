@@ -35,12 +35,7 @@ set colorcolumn=81
 set laststatus=2						" Always show the statusline
 
 " ---- BEHAVIOUR ----
-set switchbuf=usetab,newtab				" When opening a buffer, if buffer is
-										" open in another tab switch to it
-										" (usetab)
-										" if the buffer is not open create a
-										" new tab and open the buffer in it
-										" (newtab).
+set switchbuf=useopen,uselast       " Open buffer from quickfix by first looking for an already open buffer and then opening a new buffer in the last window.
 set autoread							" Reload file if changed from other source
 
 set splitright							" Split window to the right of current
@@ -72,23 +67,92 @@ set wildmenu							" Enable tab-completion menu.
 set wildmode=longest,list,full			" Full completion.
 set wildignorecase						" Ignore case in tab-completion
 
+" ---- Language Server Protocol ----
+
+"if executable(expand('~/.asdf/shims/solargraph'))
+    "" gem install solargraph
+    "au User lsp_setup call lsp#register_server({
+        "\ 'name': 'solargraph',
+        "\ 'cmd': {server_info->['~/.asdf/shims/solargraph', 'stdio']},
+        "\ 'allowlist': ['ruby'],
+        "\ })
+"endif
+
+au User lsp_setup call lsp#register_server({
+    \ 'name': 'solargraph',
+    \ 'tcp': {server_info -> 'localhost:7658'},
+    \ 'allowlist': ['ruby']
+    \ })
+
+au User lsp_setup call lsp#register_server({
+    \ 'name': 'elixirls',
+    \ 'cmd': {server_info -> ['~/.lsp/elixir-ls/rel/language_server.sh']},
+    \ 'allowlist': ['elixir']
+    \ })
+
+
+function! s:on_lsp_buffer_enabled() abort
+    setlocal omnifunc=lsp#complete
+    setlocal signcolumn=yes
+    if exists('+tagfunc') | setlocal tagfunc=lsp#tagfunc | endif
+    "nmap <buffer> gd <plug>(lsp-definition)
+    "nmap <buffer> gs <plug>(lsp-document-symbol-search)
+    "nmap <buffer> gS <plug>(lsp-workspace-symbol-search)
+    "nmap <buffer> gr <plug>(lsp-references)
+    "nmap <buffer> gi <plug>(lsp-implementation)
+    "nmap <buffer> gt <plug>(lsp-type-definition)
+    "nmap <buffer> <leader>rn <plug>(lsp-rename)
+    "nmap <buffer> [g <plug>(lsp-previous-diagnostic)
+    "nmap <buffer> ]g <plug>(lsp-next-diagnostic)
+    "nmap <buffer> K <plug>(lsp-hover)
+    "inoremap <buffer> <expr><c-f> lsp#scroll(+4)
+    "inoremap <buffer> <expr><c-d> lsp#scroll(-4)
+
+    let g:lsp_format_sync_timeout = 1000
+    autocmd! BufWritePre *.rs,*.go call execute('LspDocumentFormatSync')
+    
+    " refer to doc to add more commands
+endfunction
+
+augroup lsp_install
+    au!
+    " call s:on_lsp_buffer_enabled only for languages that has the server registered.
+    autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
+augroup END
 
 " ---- MAPPINGS ----
 " Remap :W to :w to avoid common misstake
 cnoreabbrev <expr> W ((getcmdtype() is# ':' && getcmdline() is# 'W')?('w'):('W'))
-nnoremap <silent> <F3> :TagbarToggle<CR>
-noremap <Leader>t :NERDTreeToggle<CR>
+nnoremap <silent>* :let @/='\<'.expand('<cword>').'\>'<bar>set hlsearch<CR>
 
-" wintabs mappings
+" ----- Navigation -----
 map <C-H> <Plug>(wintabs_previous)
 map <C-L> <Plug>(wintabs_next)
-map <C-T>c <Plug>(wintabs_close)
-map <C-T>u <Plug>(wintabs_undo)
-map <C-T>o <Plug>(wintabs_only)
-map <C-W>c <Plug>(wintabs_close_window)
-map <C-W>o <Plug>(wintabs_only_window)
-command! Tabc WintabsCloseVimtab
-command! Tabo WintabsOnlyVimtab
+
+" ----- File system mappings -----
+noremap <Leader>ft :NERDTreeToggle<CR>
+noremap <Leader>ff :NERDTreeFind<CR>
+noremap <Leader>fs :FZF<CR>
+map <Leader>fc <Plug>(wintabs_close)
+
+" ----- Source code mappings -----
+
+
+
+"nnoremap <silent> <F3> :TagbarToggle<CR>
+"noremap <Leader>tt :NERDTreeToggle<CR>
+"noremap <Leader>tf :NERDTreeFind<CR>
+
+" wintabs mappings
+"map <C-H> <Plug>(wintabs_previous)
+"map <C-L> <Plug>(wintabs_next)
+"map <C-T>c <Plug>(wintabs_close)
+"map <C-T>u <Plug>(wintabs_undo)
+"map <C-T>o <Plug>(wintabs_only)
+"map <C-W>c <Plug>(wintabs_close_window)
+"map <C-W>o <Plug>(wintabs_only_window)
+"command! Tabc WintabsCloseVimtab
+"command! Tabo WintabsOnlyVimtab
 
 " GUIDES
 " Move window to tab (ish) http://vim.wikia.com/wiki/Move_current_window_between_tabs
@@ -96,3 +160,5 @@ command! Tabo WintabsOnlyVimtab
 
 " Additional filetypes
 autocmd BufNewFile,BufRead *.rs set filetype=rust
+let g:lsp_log_verbose = 1
+let g:lsp_log_file = expand('~/vim-lsp.log')
