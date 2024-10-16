@@ -2,7 +2,7 @@
 " curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs \
 "         https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
-lua require('plugins')
+lua require("config.lazy")
 
 " Disable backup files
 set nobackup
@@ -21,11 +21,11 @@ filetype plugin indent on
 syntax on
 
 lua require('lsp')
-lua require('nvim_comment').setup()
+" lua require('nvim_comment').setup()
 
 " ---- UI ----
 set ruler                  " show cursor pos in low right corner
-set number                " show line numbers
+set number                 " show line numbers
 set showcmd                " show incomplete comands in low right corner
 set title                  " show title in console title bar.
 set showtabline=2
@@ -58,9 +58,6 @@ set completeopt=menuone,noinsert,noselect
 
 " ------ NERDTree
 let g:NERDTreeWinSize=50
-
-"set termguicolors
-colorscheme NeoSolarized
 
 " search
 nnoremap <silent>* :let @/='\<'.expand('<cword>').'\>'<bar>set hlsearch<CR>
